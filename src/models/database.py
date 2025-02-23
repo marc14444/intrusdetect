@@ -1,7 +1,11 @@
 from pymongo import MongoClient, errors
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Charger les variables d'environnement depuis le fichier .env
 
 # 🔗 URI de connexion à MongoDB (⚠️ Modifie selon ton setup)
-MONGO_URI = "mongodb+srv://amanijeanmarc41:siade@siade.vddar.mongodb.net/"
+MONGO_URI = os.getenv("MONGO_URI")
 
 try:
     client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)  # Timeout 5 sec
